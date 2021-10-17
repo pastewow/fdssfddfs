@@ -38,7 +38,7 @@ getgenv().Aiming = {
     Enabled = true,
 
     ShowFOV = true,
-    FOV = 60,
+    FOV = 6000,
     FOVSides = 12,
     FOVColour = Color3fromRGB(231, 84, 128),
 
@@ -413,6 +413,7 @@ function Aiming.GetClosestPlayerToCursor()
         -- // Get Character
         local Character = Aiming.Character(Player)
 
+        
         -- // Make sure isn't ignored and Character exists
         if (Aiming.IsIgnored(Player) == false and Character) then
             -- // Vars
@@ -421,7 +422,7 @@ function Aiming.GetClosestPlayerToCursor()
             if not TargetPartTemp then
                 print('Disabled')
             end
-            
+
             -- // Check if part exists and health
             if (TargetPartTemp and Aiming.CheckHealth(Player)) then
                 -- // Check if is in FOV
@@ -430,14 +431,15 @@ function Aiming.GetClosestPlayerToCursor()
                     if (Aiming.VisibleCheck and not Aiming.IsPartVisible(TargetPartTemp, Character)) then continue end
 
                     -- // Set vars
-                    
+                   
                     
                     ClosestPlayer = Player
                     ShortestDistance = Magnitude
                     TargetPart = TargetPartTemp
-                    print('Player: ' .. Player.Name .. "(" .. Player.DisplayName .. ")")
+
+                    print(Player.Name)
+                    print(TargetPart)
                     sendNotification(Player)
-                    print('Target Part: ' .. TargetPart)
                 end
             end
         end
