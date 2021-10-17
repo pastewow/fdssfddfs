@@ -38,7 +38,7 @@ getgenv().Aiming = {
     Enabled = true,
 
     ShowFOV = true,
-    FOV = 6000,
+    FOV = 60,
     FOVSides = 12,
     FOVColour = Color3fromRGB(231, 84, 128),
 
@@ -386,7 +386,7 @@ local function sendNotification(player)
     local Name = player.Name
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Selected";
-        Text = "Selected " .. Name;
+        Text = "Selected " .. player.DisplayName;
         Duration = 2;
     })
 end
@@ -426,12 +426,14 @@ function Aiming.GetClosestPlayerToCursor()
                     if (Aiming.VisibleCheck and not Aiming.IsPartVisible(TargetPartTemp, Character)) then continue end
 
                     -- // Set vars
-                    print(Player.Name)
-                    sendNotification(Player)
+                    
                     
                     ClosestPlayer = Player
                     ShortestDistance = Magnitude
                     TargetPart = TargetPartTemp
+                    print('Player: ' .. Player.Name .. "(" .. Player.DisplayName .. ")")
+                    sendNotification(Player)
+                    print('Target Part: ' .. TargetPart)
                 end
             end
         end
