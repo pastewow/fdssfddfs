@@ -418,6 +418,10 @@ function Aiming.GetClosestPlayerToCursor()
             -- // Vars
             local TargetPartTemp, _, _, Magnitude = Aiming.GetClosestTargetPartToCursor(Character)
 
+            if not TargetPartTemp then
+                print('Disabled')
+            end
+            
             -- // Check if part exists and health
             if (TargetPartTemp and Aiming.CheckHealth(Player)) then
                 -- // Check if is in FOV
@@ -432,9 +436,8 @@ function Aiming.GetClosestPlayerToCursor()
                     ShortestDistance = Magnitude
                     TargetPart = TargetPartTemp
                     print('Player: ' .. Player.Name .. "(" .. Player.DisplayName .. ")")
-                    print('Target Part: ' .. TargetPart.Name)
                     sendNotification(Player)
-               
+                    print('Target Part: ' .. TargetPart)
                 end
             end
         end
