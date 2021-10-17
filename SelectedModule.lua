@@ -432,8 +432,9 @@ function Aiming.GetClosestPlayerToCursor()
                     ShortestDistance = Magnitude
                     TargetPart = TargetPartTemp
                     print('Player: ' .. Player.Name .. "(" .. Player.DisplayName .. ")")
+                    print('Target Part: ' .. TargetPart.Name)
                     sendNotification(Player)
-                    print('Target Part: ' .. TargetPart)
+               
                 end
             end
         end
